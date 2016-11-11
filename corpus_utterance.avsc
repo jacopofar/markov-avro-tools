@@ -1,0 +1,14 @@
+{"namespace": "corpus_utterance.avro",
+ "type": "record",
+ "name": "Utterance",
+ "fields": [
+     {"name": "text", "type": "string"},
+     {"name": "timestamp",  "type": ["string", "null"]},
+     {"name": "source", "type": ["string", "null"]},
+     {"name":"tags", "type": [{
+        "type": "array",
+        "items": "string"
+      }, "null"]
+      }
+ ]
+}

@@ -1,0 +1,5 @@
+avro-python3==1.8.1
+beautifulsoup4==4.5.1
+feedparser==5.2.1
+redis==2.10.5
+requests==2.11.1
