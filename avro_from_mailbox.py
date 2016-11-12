@@ -66,7 +66,7 @@ def iterate_bodies(mbox):
 
 
 parser = argparse.ArgumentParser(
-    description="store utterances from a mbox file, like the one from gmal (google takeout)")
+    description="store utterances from a mailbox file, like the one from gmail (google takeout)")
 parser.add_argument("i", type=str, help="the input file")
 parser.add_argument("-output_file", type=str, help="the avro serialized file", default="mail_utterances.avro")
 
