@@ -22,6 +22,7 @@ Sources
 * RSS feeds
 * Twitter
 * text files in a folder
-* mail dumps (Gmail using google takeout, mail clients)
+* mail dumps (Gmail by using google takeout, other mail clients)
+* HackerNews comments
 * chat logs from Adium (IRC, Telegram)
 
