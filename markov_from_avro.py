@@ -84,7 +84,6 @@ if args.operation == 'build':
           .format(utterances_count, tokens_count, elapsed, utterances_count/elapsed))
     reader.close()
 
-# TODO add seed parameter
 if args.operation == 'generate':
     seed = start_seq
     if args.seed is not None:
