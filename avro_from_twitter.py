@@ -11,7 +11,7 @@ import signal
 import configparser
 
 config = configparser.ConfigParser()
-config.read('example.ini')
+config.read('config.ini')
 
 # Twitter API credentials
 consumer_key = config['twitter']['consumer_key']
