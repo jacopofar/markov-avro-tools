@@ -79,6 +79,7 @@ if languages is not None:
 else:
     print('will NOT filter on tweet language, no languages were specified')
 
+
 def signal_handler(signal, frame):
     print('\nSIGINT received, closing file and exiting...')
     writer.close()
