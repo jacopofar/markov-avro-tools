@@ -70,9 +70,10 @@ print('average tokens per sentence: {0}'.format(total_length_tokens/utterances_c
 print('average characters per sentence: {0}'.format(total_length_chars/utterances_count))
 print('the longest utterance had {0} characters, it was:\n{1}\n'.format(max_tokens, longest_description))
 print('found {0} types of tags'.format(len(tags_counter.keys())))
+
 max_rank = 30
 print('{0} most common tags'.format(max_rank))
 sorted_tags = sorted(tags_counter.items(), key=operator.itemgetter(1), reverse=True)[:max_rank]
-for k,v in sorted_tags:
+for k, v in sorted_tags:
     print('{0}: {1}'.format(k, v))
 
