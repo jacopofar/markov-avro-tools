@@ -25,4 +25,4 @@ Sources
 * mail dumps (Gmail by using google takeout, other mail clients)
 * HackerNews comments
 * chat logs from Adium (IRC, Telegram)
-
+* Wikiquote dump
