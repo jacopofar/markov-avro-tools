@@ -13,7 +13,7 @@ parser.add_argument("-output_file", type=str, help="the avro serialized file", d
 args = parser.parse_args()
 
 schema = avro.schema.Parse(open("corpus_utterance.avsc", "rb").read().decode('utf-8'))
-writer = DataFileWriter(open(args.outpugit t_file, "wb"), DatumWriter(), schema)
+writer = DataFileWriter(open(args.output_file, "wb"), DatumWriter(), schema)
 
 response = requests.request("GET", "https://news.ycombinator.com/")
 soup = BeautifulSoup(response.text, 'html.parser')
