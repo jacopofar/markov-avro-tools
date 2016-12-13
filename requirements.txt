@@ -1,5 +1,12 @@
+avro==1.8.1
 avro-python3==1.8.1
 beautifulsoup4==4.5.1
 feedparser==5.2.1
+mwparserfromhell==0.4.3
+nltk==3.2.1
+oauthlib==2.0.0
 redis==2.10.5
 requests==2.11.1
+requests-oauthlib==0.7.0
+six==1.10.0
+tweepy==3.5.0
