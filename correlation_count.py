@@ -56,15 +56,12 @@ PENDING_MAX_SIZE = 3000
 
 
 input_file = args.input_file
-output_format = args.output_format
 case_insensitive = (args.case_insensitive == 'yes')
-if output_format is None:
-    if case_insensitive:
-        print('the tokens will be lowercased using the system locale')
-    else:
-        print('the tokens will be counted as they are (case sensitive)')
+if case_insensitive:
+    print('the tokens will be lowercased using the system locale')
+else:
+    print('the tokens will be counted as they are (case sensitive)')
 
-    print('will build frequency list from file {0}'.format(input_file))
 
 reader = DataFileReader(open(input_file, "rb"), DatumReader())
 start_time = time.time()
@@ -119,6 +116,4 @@ for utterance in reader:
 reader.close()
 
 elapsed = time.time() - start_time
-if output_format is None:
-    print('processed {0} utterances, it took {1} seconds [{2} utterances per second]'
-          .format(utterances_count, elapsed, utterances_count/elapsed))
+print('processed {0} utterances, it took {1} seconds [{2} utterances per second]'.format(utterances_count, elapsed, utterances_count/elapsed))
