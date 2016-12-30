@@ -3,26 +3,54 @@ This is a collection of Python 3 tools to ingest text from various sources (RSS 
 Usage
 =====
 Install requisites using `pip3 install -r requirements.txt` in your virtualenv.
-Then, use one of the scripts to load data from a source (text files, Twitter, RSS feeds, mail dumps) and produce an avro utterance file. This file contains the texts from the source and, when possible, metadata such as the timestamp and tags (for example, in case of a mailbox each mail is tagged with the from and to addresses).
+Then, use one of the scripts to load data from a source (text files, Twitter, RSS feeds, mail dumps) and produce an avro utterance file. This file contains the texts from the source and, when possible, metadata such as the timestamp and tags (for example, in case of a mailbox each mail is tagged with the from and to addresses, for Twitter the hashtags, language and location are made into tags).
  
  Now that avro files are ready, you need Redis. If you have Docker, you can use `docker run -p 6379:6379 redis`.
   
- Then use `markov_from_avro.py` to build a model and generate text based on it. Use `-h`  on any script to have a description of its parameters. You can store multiple models on the same Redis instance varying the _prefix_ parameter.
+ Then use `markov_from_avro.py` to build a model and generate text based on it. Use `-h`  on this or any script to have a description of its parameters. You can store multiple models on the same Redis instance differentiating with the _prefix_ parameter.
  
  
  __N-gram size__ you can specify the length of N-grams with the keylen parameter. Note that you have to use the same keylength to build and to generate the model.
  
- __tokenizer__ you can split the text by words or by characters, see the _tokenize_ parameter
+ __tokenizer__ you can split the text by words, NLTK tokens or by characters, see the _tokenize_ parameter
  
- __mix models__ the build function doesn't empty Redis when starting, so you can invoke it on multiple avro files and mix the models. The resulting chain will mix N-grams from the various given sources. You can use tags to narrow models to a specific kind of text (e.g. hashtags on Twitter or senders for mailboxes)
+ __mix models__ the build function doesn't empty Redis when starting, so you can invoke it on multiple avro files and mix the models. The resulting chain will mix N-grams from the various given sources. You can use tags to build models only for a specific subset of utterances (e.g. hashtags on Twitter or senders for mailboxes)
 
+Additionally, you can build token frequency tables and get a few statistics
  
-Sources
+Supported Sources
 =======
-* RSS feeds
-* Twitter
-* text files in a folder
-* mail dumps (Gmail by using google takeout, other mail clients)
-* HackerNews comments
-* chat logs from Adium (IRC, Telegram)
-* Wikiquote dump
+* RSS feeds `avro_from_feed.py`
+* Twitter `avro_from_twitter.py`
+* Plain text files in a folder `avro_from_folder.py`
+* mail dumps (Gmail by using Google Takeout, other mail clients) `avro_from_mailbox.py`
+* HackerNews comments `avro_from_hackernews.py`
+* Chat logs from Adium (IRC, Telegram), see [this other repo](https://github.com/jacopofar/adium-to-avro)
+* Wikiquote dump `avro_from_wikiquote.py`
+
+Example usage
+=======
+Optional but suggested: create and activate the virtualenv with `python3 -m venv venv && source venv/bin/activate`
+
+install libraries with `pip3 install -r requirements.txt`
+
+Let's try with HackerNews: `python3 avro_from_hackernews.py`. This will create the file `hackernews_utterances.avro`, that you can inspect with [rq](https://github.com/dflemstr/rq)
+
+Now start a Redis instance:
+
+`docker run -p 6379:6379 redis`
+
+and finally build the markov chain with
+`python3 markov_from_avro.py build -input_file hackernews_utterances.avro -keylen 2 -tokenizer split`
+
+this will use 2-grams based on Python `split` function.
+
+Generate text based on it with `python3 markov_from_avro.py generate -number 3 -keylen 2` (be careful of using the same keylen parameter).
+
+I got:
+
+
+> Misread the title was 'Enter your address and only how it works. Do you support vastly expanding SEC powers and making handsome profit with enough oily dressing to lubricate a car, it doesn't take into consideration when making a decision and drugs could get to market much faster.The history of the languages you mention. Certainly Scheme, Racket and most people's job is to get this statement. Are you saying that we also don't want cough medicine that might stop my breathing, but heroin was regularly sold as cures? Endless advertorials pushing pointless product? We have no concept of the duality between programs and maps over vector space (simplification: assumes the real field).- Define differentiation for those with an extra 1 second to pass my message in and get messages back, that 1s wait for the past (I just read the bloody code until you have no idea if anyone actually claimed that it is a bit more specific.That is, ad allows the differentiation operator is well funded? What are they doing? setTimeout before they show the version as 12.04 because the NSA in one battle.
+
+
+
