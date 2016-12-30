@@ -45,12 +45,13 @@ and finally build the markov chain with
 
 this will use 2-grams based on Python `split` function.
 
-Generate text based on it with `python3 markov_from_avro.py generate -number 3 -keylen 2` (be careful of using the same keylen parameter).
+Generate text based on it with `python3 markov_from_avro.py generate -number 1 -keylen 2` (be careful of using the same keylen parameter).
 
 I got:
 
 
-> Misread the title was 'Enter your address and only how it works. Do you support vastly expanding SEC powers and making handsome profit with enough oily dressing to lubricate a car, it doesn't take into consideration when making a decision and drugs could get to market much faster.The history of the languages you mention. Certainly Scheme, Racket and most people's job is to get this statement. Are you saying that we also don't want cough medicine that might stop my breathing, but heroin was regularly sold as cures? Endless advertorials pushing pointless product? We have no concept of the duality between programs and maps over vector space (simplification: assumes the real field).- Define differentiation for those with an extra 1 second to pass my message in and get messages back, that 1s wait for the past (I just read the bloody code until you have no idea if anyone actually claimed that it is a bit more specific.That is, ad allows the differentiation operator is well funded? What are they doing? setTimeout before they show the version as 12.04 because the NSA in one battle.
+> Perhaps someone in the group. With slack, there's on boarding and a link between high cholesterol and cardiovascular disease has been compiling everything from node into browser - emulating a lot of expressive power, but hey, no halting problem. The obvious thing to forget on HN, flat earth? Chemtrails? After a recent article in the mortgage & finance markets.
+
 
 
 
