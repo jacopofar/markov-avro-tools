@@ -13,7 +13,7 @@ parser.add_argument("-keylen", type=int, help="the N-gram size", default=3)
 parser.add_argument("-input_file", type=str, help="the input avro file", default="utterances.avro")
 parser.add_argument("-skip_to", type=int, help="ignore the first N utterances (used to resume importing)", default=0)
 parser.add_argument("-tokenizer", type=str, help="the method to map text and tokens", default='split',
-                    choices=['split', 'char'])
+                    choices=['split', 'char', 'nltk'])
 parser.add_argument("-markov_prefix", type=str, help="the prefix for redis keys", default="mkv")
 parser.add_argument("-tags", type=str, help="the tags, if any, to be filtered in the corpus", default="")
 parser.add_argument("-number", type=int, help="the number of utterances to generate", default=1)
@@ -40,6 +40,18 @@ if args.tokenizer == 'char':
 
 if args.tokenizer == 'split':
     def splitter(x): return x.split(' ')
+
+    def joiner(x): return ' '.join(x)
+
+
+if args.tokenizer == 'nltk':
+    from nltk.tokenize import RegexpTokenizer
+
+    tokenizer = RegexpTokenizer('\w+|\$[\d\.]+|\S+')
+
+
+    def splitter(x): return tokenizer.tokenize(x)
+
 
     def joiner(x): return ' '.join(x)
 

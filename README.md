@@ -38,7 +38,7 @@ Example usage
 =======
 Optional but suggested: create and activate the virtualenv with `python3 -m venv venv && source venv/bin/activate`
 
-install libraries with `pip3 install -r requirements.txt`
+Install libraries with `pip3 install -r requirements.txt`
 
 Let's try with HackerNews: `python3 avro_from_hackernews.py`. This will create the file `hackernews_utterances.avro`, that you can inspect with [rq](https://github.com/dflemstr/rq)
 
@@ -58,6 +58,16 @@ I got:
 
 > Perhaps someone in the group. With slack, there's on boarding and a link between high cholesterol and cardiovascular disease has been compiling everything from node into browser - emulating a lot of expressive power, but hey, no halting problem. The obvious thing to forget on HN, flat earth? Chemtrails? After a recent article in the mortgage & finance markets.
 
+Now let's try building one from characters:
 
+`python3 markov_from_avro.py build -input_file hackernews_utterances.avro -keylen 4 -tokenizer char -markov_prefix hn_c`
 
+this time the keylen is different and with the prefix _nh_c_ there's no confusion with the previous ones.
 
+with `python3 markov_from_avro.py generate -number 1 -keylen 4 -markov_prefix hn_c -tokenizer char`
+
+I got:
+
+> Just now the phrased amphetaming with is not benefit is a differ own the me, ever you can in other the bust is going somethods like south Arduino Hearing: http://www.bbc.co.uk/newsletting than employ peace that clearnings - tree wife industry prove to benefit, but does to have see wholested.In that is plane featurate any of then that my photos (to states looks. Does to tellennials are only would had side overdoing a versatistick all TSX (HSW136) is for act the UK.
+
+Works with Python 3.6, enjoy!
