@@ -1,4 +1,10 @@
-This is a collection of Python 3 tools to ingest text from various sources (RSS feeds, text files, etc.), build Markov chains, and generate text.
+This is a collection of Python 3 tools to ingest text from various sources (RSS feeds, text files, etc.), build frequency counts and build Markov chains to generate text.
+
+Why?
+====
+Because Markov chains and frequency tables are interesting, but in spite of being fairly simple it's hard to find a flexible tool to build them. 
+
+Moreover, the intermediate tagged avro files are suitable for other NPL tasks.
 
 Usage
 =====

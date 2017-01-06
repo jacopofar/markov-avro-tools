@@ -4,6 +4,8 @@ import time
 import argparse
 import sqlite3
 
+print("currently not working, it's incredibly slow and rows are duplicated, could be better to use Redis or Postgres or some other tool")
+exit()
 # parameters from CLI
 parser = argparse.ArgumentParser(description="calculate a tag/token co-occurrency table from a corpus file")
 parser.add_argument("-input_file", type=str, help="the input avro file")
