@@ -28,11 +28,12 @@ Supported Sources
 =======
 * RSS feeds `avro_from_feed.py`
 * Twitter `avro_from_twitter.py`
-* Plain text files in a folder `avro_from_folder.py`
+* Plain text files in a folder `avro_from_folder.py` 
 * mail dumps (Gmail by using Google Takeout, other mail clients) `avro_from_mailbox.py`
 * HackerNews comments `avro_from_hackernews.py`
 * Chat logs from Adium (IRC, Telegram), see [this other repo](https://github.com/jacopofar/adium-to-avro)
 * Wikiquote dump `avro_from_wikiquote.py`
+* Wikipedia dumps `plaintext_from_wikidump.py`
 
 Example usage
 =======
