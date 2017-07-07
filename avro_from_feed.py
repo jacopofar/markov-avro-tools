@@ -93,8 +93,8 @@ parser.add_argument("url", type=str, help="the URL of a page containing the RSS 
 parser.add_argument("-output_file", type=str, help="the avro serialized file", default="utterances.avro")
 
 feature_parser = parser.add_mutually_exclusive_group(required=False)
-feature_parser.add_argument('--detect-rss', dest='direct_feed', action='store_true', help="wether the given URL is a site page (default) from which to extract the feed address, or directly the RSS feed URL")
-feature_parser.add_argument('--no-detect-rss', dest='direct_feed', action='store_false', help="wether the given URL is a site page (default) from which to extract the feed address, or directly the RSS feed URL")
+feature_parser.add_argument('--detect-rss', dest='direct_feed', action='store_false', help="wether the given URL is a site page (default) from which to extract the feed address, or directly the RSS feed URL")
+feature_parser.add_argument('--no-detect-rss', dest='direct_feed', action='store_true', help="wether the given URL is a site page (default) from which to extract the feed address, or directly the RSS feed URL")
 parser.set_defaults(direct_feed=True)
 
 
