@@ -92,6 +92,12 @@ parser = argparse.ArgumentParser(description="download articles from a feed")
 parser.add_argument("url", type=str, help="the URL of a page containing the RSS rel element")
 parser.add_argument("-output_file", type=str, help="the avro serialized file", default="utterances.avro")
 
+feature_parser = parser.add_mutually_exclusive_group(required=False)
+feature_parser.add_argument('--detect-rss', dest='direct_feed', action='store_true', help="wether the given URL is a site page (default) from which to extract the feed address, or directly the RSS feed URL")
+feature_parser.add_argument('--no-detect-rss', dest='direct_feed', action='store_false', help="wether the given URL is a site page (default) from which to extract the feed address, or directly the RSS feed URL")
+parser.set_defaults(direct_feed=True)
+
+
 args = parser.parse_args()
 
 schema = avro.schema.Parse(open("corpus_utterance.avsc", "rb").read().decode('utf-8'))
@@ -105,8 +111,10 @@ utterances_count = 0
 articles_count = 0
 headers = {}
 response = requests.request("GET", url, headers=headers)
-
-feed_url = detect_feed_in_HTML(response.text)
+if args.direct_feed:
+	feed_url = url
+else:
+	feed_url = detect_feed_in_HTML(response.text)
 print('feed URL: ' + feed_url)
 
 d = feedparser.parse(feed_url)
