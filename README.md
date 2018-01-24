@@ -2,9 +2,9 @@ This is a collection of Python 3 tools to ingest text from various sources (RSS 
 
 Why?
 ====
-Because Markov chains and frequency tables are interesting, but in spite of being fairly simple it's hard to find a flexible tool to build them. 
+Because Markov chains and frequency tables are interesting, ~~but in spite of being fairly simple it's hard to find a flexible tool to build them~~ __There is__: https://github.com/jsvine/markovify/ I wasn't aware of Markovify at the time and didn't find it at the time, it's definitely a fine way to play with markov chains, it's fast, extensible and play well with big text corpora, use it. Still I like to have here a collection of tools to extract some common sources and save them in Avro format.
 
-Moreover, the intermediate tagged avro files are suitable for other NPL tasks.
+Moreover, the intermediate tagged avro files are suitable for other NPL tasks. 
 
 Usage
 =====
