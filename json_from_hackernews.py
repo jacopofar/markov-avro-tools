@@ -12,7 +12,7 @@ parser.add_argument(
     "-output_file",
     type=str,
     help="the one-JSON-per-line serialized file",
-    default="hackernews_utterances.json")
+    default="hackernews_utterances.jsons")
 
 args = parser.parse_args()
 
@@ -49,7 +49,7 @@ for article_link in article_comment_links:
             relative_time = comment_box.contents[0].contents[0].contents[3].get_text()
 
             writer.write(json.dumps({"text": clean_comment,
-                                     "scrape_timestamp": datetime.now().isoformat(),
+                                     "scrape_timestamp": datetime.now().isoformat()[:19] + 'Z',
                                      "relative_time": relative_time,
                                      "source": article_link,
                                      "username": username,
