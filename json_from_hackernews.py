@@ -22,8 +22,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 article_comment_links = set()
 
 for link in soup.find_all('a'):
-    if 'item?id=' in link.get('href'):
-        link.get('href')
+    if link.get('href').startswith('item?id='):
         article_comment_links.add(
             "https://news.ycombinator.com/" +
             link.get('href'))
@@ -37,6 +36,10 @@ for article_link in article_comment_links:
     print('examining ' + article_link)
     response = requests.request("GET", article_link)
     soup = BeautifulSoup(response.text, 'html.parser')
+    story_url = ''
+    for story_link in soup.find_all("a", class_="storylink"):
+        print('story:', story_link.get('href'))
+        story_url = story_link.get('href')
     with open(args.output_file, "a+") as writer:
         for comment_box in soup.find_all("td", class_="default"):
             print(comment_box.contents)
@@ -53,7 +56,7 @@ for article_link in article_comment_links:
                                      "relative_time": relative_time,
                                      "source": article_link,
                                      "username": username,
-                                     "tags": []}))
+                                     "story_url": story_url}))
             writer.write('\n')
             print('-----')
             comment_count += 1
