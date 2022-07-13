@@ -1,3 +1,5 @@
+__DEPRECATION:__ this is an old toy project and has no much use now, I'm archiving it. Use [Markovify](https://github.com/jsvine/markovify/) for Markov chains
+
 This is a collection of Python 3 tools to ingest text from various sources (RSS feeds, text files, etc.), build frequency counts and build Markov chains to generate text.
 
 Why?
